@@ -1,0 +1,36 @@
+﻿@model GerenciamentoDeClientes.Models.Pessoas.ListarViewModel.Pessoa
+
+<h5>Editar Cliente: @Model.Id</h5>
+
+<form action="/pessoas/editar" method="post">
+  <input type="hidden" name="id" value="@Model.Id">
+  <div class="mb-3">
+    <label class="form-label">Nome</label>
+    <input type="text" class="form-control" name="nome" value='@Model.Nome'>
+        @if (Model.NomeError != null)
+        {
+            <span style="color:red">@Model.NomeError</span>
+            <span style='color:red'>O digitado foi: '@Model.Nome'</span>
+        }
+  </div>
+  <div class="mb-3">
+    <label class="form-label">CPF</label>
+    <input type="text" class="form-control" name="cpf" value='@Model.Cpf'>
+        @if (Model.CpfError != null)
+        {
+            <span style="color:red">@Model.CpfError</span>  
+            <span style='color:red'>O digitado foi: '@Model.Cpf'</span>
+            
+        }
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Data de Nascimento</label>
+    <input type="date" class="form-control" name="dataNascimento" value='@Model.DataNascimento'>
+        @if (Model.DataNascimentoError != null)
+        {
+            <span style="color:red">@Model.DataNascimentoError</span>   
+            <span style='color:red'>O digitado foi: '@Model.DataNascimento'</span>            
+        }
+  </div>
+  <button type="submit" class="btn btn-primary">Cadastrar</button>
+</form>

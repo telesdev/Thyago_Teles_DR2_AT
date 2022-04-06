@@ -1,0 +1,37 @@
+﻿@model IEnumerable<GerenciamentoDeClientes.Models.Pessoas.ListarViewModel.Pessoa>
+
+<h5>Lista de Clientes</h5>
+
+<form action="/pessoas/listar" method="get">
+    <div class="mb-3">
+        <input type='text' class='form-control' name='Nome'/>
+    </div>
+    <button type='submit' class='btn btn-primary'>Filtrar</button>
+</form>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nome</th>
+      <th scope="col">CPF</th>
+      <th scope="col">Data de Nascimento</th>
+      <th scope="col">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+        @foreach(var pessoa in Model)
+        {
+            <tr>
+                <th scope="row">@pessoa.Id</th>
+                <td>@pessoa.Nome</td>
+                <td>@pessoa.Cpf</td>
+                <td>@pessoa.DataNascimento</td>
+                <td>
+                    <a href="/pessoas/editar?id=@pessoa.Id" class="btn btn-sm btn-secondary" role="button" aria-pressed="true">Editar</a>
+                    <a href="/pessoas/remover?id=@pessoa.Id" class="btn btn-sm btn-danger" role="button" aria-pressed="true">Remover</a>
+                </td>
+            </tr>
+        }
+  </tbody>
+</table>
